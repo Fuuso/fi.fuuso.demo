@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd     
+        http://www.springframework.org/schema/context  
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd  
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd" 
+        xmlns:mvc="http://www.springframework.org/schema/mvc"  
+        xmlns:aop="http://www.springframework.org/schema/aop" 
+        xmlns:context="http://www.springframework.org/schema/context" 
+        xmlns:p="http://www.springframework.org/schema/p" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns="http://www.springframework.org/schema/beans"> 
+
+	<context:annotation-config/> 
+	<mvc:default-servlet-handler/>
+	<mvc:annotation-driven />
+	<context:component-scan base-package="fi.fuuso.demo" />
+	   
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" > 
+		<property name="prefix"> 
+			<value>/</value> 
+		</property> 
+		<property name="suffix"> 
+			<value>.jsp</value> 
+		</property> 
+	</bean>    		
+	
+	<bean id="inputFormController" class="fi.fuuso.demo.controllers.InputFormController" />
+	
+	<bean id="userInputDAO" class="fi.fuuso.demo.dao.impl.HibernateUserInputDAO" />
+
+	<bean id="userInputService" class="fi.fuuso.demo.services.impl.UserInputServiceImpl">
+		<property name="userInputDAO" ref="userInputDAO"/>
+	</bean>
+
+</beans>

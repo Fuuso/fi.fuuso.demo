@@ -19,13 +19,13 @@ public class InputData {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@Column(name="firstname")
+	@Column(name="firstname", length=50)
 	private String firstName;
-	@Column(name="lastname")
+	@Column(name="lastname", length=50)
 	private String lastName;
-	@Column(name="gender")
+	@Column(name="gender", length=10)
 	private String gender;
-	@Column(name="description")
+	@Column(name="description", length=2000)
 	private String description;
 	
 	public Integer getId() {

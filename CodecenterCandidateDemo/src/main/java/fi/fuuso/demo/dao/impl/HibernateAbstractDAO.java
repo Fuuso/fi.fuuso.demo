@@ -2,7 +2,6 @@ package fi.fuuso.demo.dao.impl;
 
 import java.io.Serializable;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 
 import fi.fuuso.demo.dao.AbstractDAO;
@@ -17,12 +16,6 @@ public class HibernateAbstractDAO<T, ID extends Serializable> implements Abstrac
 	public void store(T entity) {
 		Session hibernateSession = this.getSession();
 		hibernateSession.save(entity);
-	}
-
-	public T selectOne(Query query) {
-        T t;
-        t = (T) query.uniqueResult();
-        return t;
 	}
 
 }
